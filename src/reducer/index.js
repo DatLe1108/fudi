@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import suggestorRecipeReducer from './SuggestorRecipeReducer';
 
 export default combineReducers({
-    fixMe: () => 10
+    suggestRecipe: suggestorRecipeReducer
 });

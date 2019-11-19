@@ -1,25 +1,26 @@
 import React from 'react';
 import recipeApi from '../api/recipeApi';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import RecipeSuggester from './RecipeSuggester';
+import RecipeDetail from './RecipeDetail';
 
 class App extends React.Component {
 
     componentDidMount() {
-        const result = recipeApi.get('/recipes/search',
-            {
-                params: {
-                    query: 'tomato',
-                    cuisine: 'vietnam'
-                }
-            }
-        ).then((response) => {
-            console.log(response);
-        });
+        
     }
 
     render() {
-        return (<div>App</div>);
+        return (
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/" exact component={RecipeSuggester} />
+                    <Route path="/recipe/:id" exact component={RecipeDetail} />
+                </Switch>
+            </BrowserRouter>
+        );
     }
-
 }
 
 export default App;
